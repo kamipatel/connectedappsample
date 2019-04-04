@@ -2,10 +2,12 @@
 
 1. Clone the repo
 
-2. Create certificate (along with private key)
+2. Go to project root directory and from the command line, run command "npm install"
+
+3. Create certificate (along with private key)
    https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_key_and_cert.htm
 
-3. Create connected app with digital certificate
+4. Create connected app with digital certificate
 
 - Callback: https://localhost:8443/oauth/callback
 
@@ -26,16 +28,21 @@
 
 5. Replace the server.key under lib directory of the project
 
-6. Test using command "Heroku local". (Make sure redirect URL in connected app is in following format)
-   http://HOST:PORT/oauth/callback
-
 ## Run Locally
 
 - Once you have the above setup correctly, you can run by running `heroku local` and then browse to http://localhost:8443/
 
 - Click "Client Admin Login" and login using client org's Sys Admin user
 - App will fetch and display client salesforce org's users
-- Client org's Sys Admin user will select the users that he/shae wish to grant partner to callback using API.
-- Partner
+- Client org's Sys Admin user will select the users that he/she wish to grant partner to callback using API later on.
+- Partner stored the information of client org's instanceURL and user names in order to call back using JWT mechanism.
 
 ## Upload the app to Heroku as a new app
+
+Go to heroku.com and create a new app and that should give you instructions on how to push your code e.g.
+
+git init
+heroku git:remote -a yourappname
+git add .
+git commit -am "Initial checkin"
+git push heroku master
